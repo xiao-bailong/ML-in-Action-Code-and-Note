@@ -1,6 +1,8 @@
 #coding=utf-8
 from numpy import *  #科学计算包numpy
 import operator      #运算符模块
+from importlib import reload
+
 #k-近邻算法
 #计算距离
 def classify0(inX,dataSet,labels,k):
@@ -119,18 +121,38 @@ def handwritingClassTest():
         print("the classifier came back with: %d,the real answer is: %d" %(classifierResult,classNumStr))
         if(classifierResult!=classNumStr):
             errorCount+=1.0
-        print("\nthe total number of errors is: %d" % errorCount)
-        print("\nthe total rate is:%f"% (errorCount/float(mTest)))
+    print("\nthe total number of errors is: %d" % errorCount)
+    print("\nthe total rate is:%f"% (errorCount/float(mTest)))
+'''约会分类'''
+# 准备数据：从文本文件中解析数据
+datingDataMat,datingLabels = file2matrix('datingTestSet2.txt')
 
+#分析数据： 使用 Matplotlib创建散点图
+import matplotlib
+import matplotlib.pyplot as plt
+fig = plt.figure()
+'''ax = fig.add_subplot(111)
+#ax.scatter(datingDataMat[:,1], datingDataMat[:,2])
+ax.scatter(datingDataMat[:,1], datingDataMat[:,2],15.0*array(datingLabels), 15.0*array(datingLabels))
+plt.show()'''
 
+# 准备数据：归一化数值
+#normMat, ranges, minVals =autoNorm(datingDataMat)
+#print(normMat)
+#print(ranges)
+#print(minVals)
 
+#测试算法：作为完整程序验证分类器
+#datingClassTest()
 
+#使用算法：构建完整可用系统
+#classifyPerson()
 
+'''手写识别系统 '''
+#准备数据：将图像转换为测试向量
+'''testVector=img2vector('testDigits/0_13.txt')
+print(testVector[0,0:31])
+print(testVector[0,32:63])'''
 
-
-
-
-
-
-
-
+# 测试算法：使用 k-近邻算法识别手写数字
+#handwritingClassTest()
